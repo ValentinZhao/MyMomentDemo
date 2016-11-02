@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8F8">
+
+    <ImageView
+        android:id="@+id/iv_item_headshot"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tv_item_usrId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_item_headshot"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/iv_item_headshot"
+        android:text="Valentin"
+        android:textColor="#4A708B"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_item_content"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_item_usrId"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/iv_item_headshot"
+        android:maxLines="5"
+        android:paddingTop="10dp"
+        android:text="我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本"
+        android:textColor="#000"
+        android:textSize="18sp" />
+
+    <widget.MyMomentPicsLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/nine_grid_layout"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_item_content"
+        android:layout_alignLeft="@id/tv_item_content"
+        app:sapcing="4dp"/>
+
+    <TextView
+        android:id="@+id/tv_item_update_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_item_content"
+        android:layout_below="@+id/nine_grid_layout"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="1小时前"
+        android:textSize="15sp" />
+
+    <ImageButton
+        android:id="@+id/btn_item_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_item_update_time"
+        android:layout_alignRight="@+id/tv_item_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/comment_selector" />
+
+</RelativeLayout>

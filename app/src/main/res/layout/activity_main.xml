@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#EAEAEA"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.test.zhaoziliang.mymomentdemo.MainActivity">
+
+    <TextView
+        android:id="@+id/tv_moment"
+        android:background="#fff"
+        android:drawableRight="@mipmap/arrow"
+        android:drawableLeft="@mipmap/progress"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:text="朋友圈"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+</RelativeLayout>
