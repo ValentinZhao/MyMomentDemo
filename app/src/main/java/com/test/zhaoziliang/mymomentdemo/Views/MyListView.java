@@ -5,6 +5,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,9 +19,20 @@ import com.test.zhaoziliang.mymomentdemo.Utils.ImageLoaders;
 
 public class MyListView extends ListView {
     private View mHeaderView;
+    private ImageView refreshIcon;
+    private View momentView;
     private ImageView iv_cover;
     private ImageView iv_headshot;
     private TextView tv_usrId;
+    private RotateAnimation upRotateAnim;
+    private RotateAnimation downRotateAnim;
+
+    private final int PULL_REFRESH = 0;
+    private final int RELEASE_REFRESH = 1;
+    private final int REFRESHING = 2;
+
+    private int iconHeight;
+    private int downY;
     public MyListView(Context context) {
         super(context);
         init(context);
@@ -52,4 +64,16 @@ public class MyListView extends ListView {
         tv_usrId.setText("Valentin");
         addHeaderView(mHeaderView);
     }
+
+    private void initRefreshIcon() {
+        refreshIcon.measure(0, 0);
+        iconHeight = refreshIcon.getMeasuredHeight();
+        refreshIcon.setPadding(0, iconHeight, 0, 0);
+    }
+
+    public void setRefreshIcon(ImageView refreshIcon){
+        this.refreshIcon = refreshIcon;
+        initRefreshIcon();
+    }
+
 }

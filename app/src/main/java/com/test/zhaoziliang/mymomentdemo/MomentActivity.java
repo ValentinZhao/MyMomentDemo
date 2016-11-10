@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.test.zhaoziliang.mymomentdemo.Views.MyListView;
 import com.test.zhaoziliang.mymomentdemo.adapter.MyAdapter;
@@ -30,6 +31,7 @@ public class MomentActivity extends Activity implements OnPhotoLayoutClickListen
     private ArrayList<String> contentImgs;
     private PhotoManager manager;
     private InterfaceImpls interfaceImpls;
+    private ImageView refresh_icon;
     private View momentItemView;
     private MyMomentPicsLayout picsLayout;
 
@@ -39,6 +41,7 @@ public class MomentActivity extends Activity implements OnPhotoLayoutClickListen
         setContentView(R.layout.activity_moment);
         manager = PhotoManager.create(MomentActivity.this, (HackyViewPager) findViewById(R.id.photo_pager), findViewById(R.id.photo_container),
                 (DotIndicator) findViewById(R.id.dot_indicator));
+        refresh_icon = (ImageView) findViewById(R.id.refresh_icon);
         interfaceImpls = new InterfaceImpls(this);
         initUserDatas();
     }
@@ -61,6 +64,7 @@ public class MomentActivity extends Activity implements OnPhotoLayoutClickListen
         data = new ArrayList<UserInfo>();
         contentImgs = initImgs();
         listView = (MyListView) findViewById(R.id.my_list_view);
+        listView.setRefreshIcon(refresh_icon);
         UserInfo user_1 = new UserInfo();
         initUser(user_1, "Ken", "http://img0.imgtn.bdimg.com/it/u=1907522267,200908207&fm=21&gp=0.jpg",
                 "天气不错!", 4);
@@ -122,4 +126,5 @@ public class MomentActivity extends Activity implements OnPhotoLayoutClickListen
     public InterfaceImpls Transit() {
         return interfaceImpls;
     }
+
 }
