@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.test.zhaoziliang.mymomentdemo.R;
 import com.test.zhaoziliang.mymomentdemo.Utils.ImageLoaders;
@@ -21,9 +22,10 @@ import widget.MyMomentPicsLayout;
  * Created by zhaoziliang on 16/10/18.
  */
 
-public class MyAdapter extends BaseAdapter{
+public class MyAdapter extends BaseAdapter implements View.OnClickListener{
     private ArrayList<UserInfo> data;
     public Context context;
+    ViewHolder holder;
 
     public MyAdapter(Context context, ArrayList<UserInfo> data){
         this.context = context;
@@ -46,7 +48,6 @@ public class MyAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
         UserInfo info = (UserInfo) getItem(position);
         if(convertView == null){
             convertView = View.inflate(context, R.layout.moment_item, null);
@@ -61,12 +62,24 @@ public class MyAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
         ImageLoaders.setImage(info.headshotUrl, holder.iv_headshot);
+        holder.btn_comment.setOnClickListener(this);
         holder.tv_usrId.setText(info.userId);
         holder.tv_content.setText(info.content);
         holder.tv_update_time.setText("1小时前");
         holder.ninePicsLayout.setIsShowAll(info.isShowAll);
         holder.ninePicsLayout.setUrlList(info.content_imgs);
         return convertView;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_item_comment:
+                Toast.makeText(context, "有点击!", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
     }
 
     static class ViewHolder{
