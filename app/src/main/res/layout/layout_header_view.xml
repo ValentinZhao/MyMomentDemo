@@ -9,24 +9,34 @@
         android:scaleType="centerCrop"
         android:layout_height="160dp" />
 
-    <TextView
-        android:id="@+id/tv_usr_id"
-        android:text="Valentin"
-        android:textColor="#000"
-        android:textSize="30sp"
-        android:layout_toLeftOf="@+id/iv_headshot"
-        android:layout_alignBottom="@id/iv_cover"
-        android:paddingRight="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/iv_cover"/>
 
-    <ImageView
-        android:id="@+id/iv_headshot"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_alignRight="@id/iv_cover"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="110dp"
-        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="120dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/tv_usr_id"
+            android:text="Valentin"
+            android:textColor="#000"
+            android:textSize="30sp"
+            android:layout_toLeftOf="@+id/iv_headshot"
+            android:paddingRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_headshot"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="20dp"
+            android:scaleType="fitXY" />
+    </LinearLayout>
 
 </RelativeLayout>
