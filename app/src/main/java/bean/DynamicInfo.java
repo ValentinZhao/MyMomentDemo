@@ -5,5 +5,5 @@ package bean;
  */
 
 public class DynamicInfo {
-    public int likeState;
+    public boolean likeState;
 }

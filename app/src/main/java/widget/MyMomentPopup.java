@@ -27,6 +27,7 @@ import razerdp.basepopup.BasePopupWindow;
 
 public class MyMomentPopup extends BasePopupWindow implements View.OnClickListener{
     private Context context = getContext();
+    private Activity mContext;
     private View mPopupView = getPopupWindowView();
     private int[] viewLocation;
 
@@ -42,6 +43,8 @@ public class MyMomentPopup extends BasePopupWindow implements View.OnClickListen
     public MyMomentPopup(Activity context) {
         super(context);
         this.context = context;
+        this.mContext = context;
+        mDynamicInfo = new DynamicInfo();
         viewLocation = new int[2];
         buildValues();
     }
@@ -55,17 +58,27 @@ public class MyMomentPopup extends BasePopupWindow implements View.OnClickListen
 
         mLikeView.setOnClickListener(this);
         mCommentClickLayout.setOnClickListener(this);
+        mDynamicInfo.likeState = ConfigurationValues.LIKE_STATE;
         mLikeClikcLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(mPopupWindow != null && mPopupWindow.isShowing()){
-//                    Toast.makeText(context, "Click Popupwindow!", Toast.LENGTH_SHORT).show();
-                    mLikeText.setText("取消");
-                    mLikeView.clearAnimation();
-                    mLikeView.startAnimation(mScaleAnimation);
-//                    mPopupWindow.dismiss();
-                    return true;
-                }
+               switch (event.getAction()){
+                   case MotionEvent.ACTION_DOWN:
+                       mDynamicInfo.likeState = !mDynamicInfo.likeState;
+                       if(mPopupWindow != null && mPopupWindow.isShowing()){
+                           if(mDynamicInfo.likeState){
+                               mLikeText.setText("取消");
+                               mLikeView.clearAnimation();
+                               mLikeView.startAnimation(mScaleAnimation);
+                           } else {
+                               mLikeText.setText("赞  ");
+                               mLikeView.clearAnimation();
+                               mLikeView.startAnimation(mScaleAnimation);
+                           }
+                           return true;
+                       }
+                       break;
+               }
                 return false;
             }
         });
@@ -75,9 +88,6 @@ public class MyMomentPopup extends BasePopupWindow implements View.OnClickListen
             public boolean onTouch(View v, MotionEvent event) {
                 if(mPopupWindow != null && mPopupWindow.isShowing()){
                     Toast.makeText(context, "点击了评论!", Toast.LENGTH_SHORT).show();
-//                    mLikeText.setText("取消");
-//                    mLikeView.clearAnimation();
-//                    mLikeView.startAnimation(mScaleAnimation);
                     mPopupWindow.dismiss();
                     return true;
                 }
@@ -118,8 +128,8 @@ public class MyMomentPopup extends BasePopupWindow implements View.OnClickListen
     public void showPopupWindow(View v) {
         v.getLocationOnScreen(viewLocation);
 //        mPopupWindow.showAtLocation(v, Gravity.RIGHT | Gravity.TOP, (int) (v.getWidth() * 1.8),
-//                viewLocation[1] - UIUtils.dip2Px(context, 10f));
-        mPopupWindow.showAsDropDown(v);
+//                viewLocation[1] - UIUtils.dip2Px(mContext, 10f));
+        mPopupWindow.showAsDropDown(v, 0, -120);
 
         if(initShowAnimation() != null && initAnimaView() != null){
             initAnimaView().startAnimation(initShowAnimation());
@@ -172,9 +182,9 @@ public class MyMomentPopup extends BasePopupWindow implements View.OnClickListen
             return;
         }
         mDynamicInfo = info;
-        if(mDynamicInfo.likeState == ConfigurationValues.NOT_LIKED){
+        if(mDynamicInfo.likeState == ConfigurationValues.LIKE_STATE){
             mLikeText.setText("赞  ");
-        } else if(mDynamicInfo.likeState == ConfigurationValues.HAS_LIKED){
+        } else {
             mLikeText.setText("取消");
         }
     }

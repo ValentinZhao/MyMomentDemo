@@ -5,7 +5,5 @@ package Configuration;
  */
 
 public class ConfigurationValues {
-    public static int HAS_LIKED = 1;
-
-    public static int NOT_LIKED = 0;
+    public static boolean LIKE_STATE = true;
 }

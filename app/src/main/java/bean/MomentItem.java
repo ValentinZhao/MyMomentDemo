@@ -3,7 +3,7 @@ package bean;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,10 +19,11 @@ import widget.MyMomentPopup;
 
 public class MomentItem implements View.OnClickListener{
     public ImageView iv_headshot;
+    public ImageView iv_comment;
     public TextView tv_usrId;
     public TextView tv_content;
     public TextView tv_update_time;
-    public ImageButton btn_comment;
+    public FrameLayout btn_comment;
 
     private View itemView;
     private UserInfo userInfo;
@@ -37,7 +38,7 @@ public class MomentItem implements View.OnClickListener{
         this.context = context;
         this.itemView = view;
         dynamicInfo = new DynamicInfo();
-        dynamicInfo.likeState = ConfigurationValues.NOT_LIKED;
+        dynamicInfo.likeState = ConfigurationValues.LIKE_STATE;
         mPopupWindow = new MyMomentPopup(mContext);
     }
 
@@ -46,7 +47,8 @@ public class MomentItem implements View.OnClickListener{
         tv_usrId = (TextView) itemView.findViewById(R.id.tv_item_usrId);
         tv_content = (TextView) itemView.findViewById(R.id.tv_item_content);
         tv_update_time = (TextView) itemView.findViewById(R.id.tv_item_update_time);
-        btn_comment = (ImageButton) itemView.findViewById(R.id.btn_item_comment);
+        iv_comment = (ImageView) itemView.findViewById(R.id.btn_item_comment);
+        btn_comment = (FrameLayout) itemView.findViewById(R.id.comment_button);
     }
 
     public void bindDatas(UserInfo info){
@@ -62,9 +64,9 @@ public class MomentItem implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btn_item_comment:
+            case R.id.comment_button:
 //                Toast.makeText(context, "点击了评论按钮!", Toast.LENGTH_SHORT).show();
-                mPopupWindow.showPopupWindow(v);
+                mPopupWindow.showPopupWindow(iv_comment);
                 break;
             default:
                 break;

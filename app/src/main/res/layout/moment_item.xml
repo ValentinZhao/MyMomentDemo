@@ -56,14 +56,20 @@
         android:text="1小时前"
         android:textSize="15sp" />
 
-    <ImageButton
-        android:id="@+id/btn_item_comment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tv_item_update_time"
-        android:layout_alignRight="@+id/tv_item_content"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/comment_selector" />
+    <FrameLayout
+        android:id="@+id/comment_button"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/nine_grid_layout">
+
+        <ImageView
+            android:id="@+id/btn_item_comment"
+            android:layout_width="25dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical|right"
+            android:background="@drawable/bg_comment_pressed" />
+    </FrameLayout>
 
 </RelativeLayout>
