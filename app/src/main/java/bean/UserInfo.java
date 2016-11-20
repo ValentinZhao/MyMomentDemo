@@ -13,4 +13,5 @@ public class UserInfo implements Serializable{
     public String content;
     public ArrayList<String> content_imgs;
     public boolean isShowAll = false;
+    public DynamicInfo dynamicInfo;
 }
