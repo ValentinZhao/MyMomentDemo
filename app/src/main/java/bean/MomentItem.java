@@ -1,5 +1,6 @@
 package bean;
 
+<<<<<<< HEAD
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
@@ -13,12 +14,20 @@ import com.test.zhaoziliang.mymomentdemo.Utils.ImageLoaders;
 import Configuration.ConfigurationValues;
 import widget.MyMomentPopup;
 
+=======
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+>>>>>>> cdfcdfc46b6e5ef6f5ecad79807a164d7f0434e0
 /**
  * Created by zhaoziliang on 16/10/28.
  */
 
 public class MomentItem implements View.OnClickListener{
     public ImageView iv_headshot;
+<<<<<<< HEAD
     public ImageView iv_comment;
     public TextView tv_usrId;
     public TextView tv_content;
@@ -58,11 +67,23 @@ public class MomentItem implements View.OnClickListener{
         tv_usrId.setText(info.userId);
         tv_content.setText(info.content);
         tv_update_time.setText("1小时前");
+=======
+    public TextView tv_usrId;
+    public TextView tv_content;
+    public TextView tv_update_time;
+    public ImageButton btn_comment;
+
+    private View itemView;
+
+    public MomentItem(View view){
+        this.itemView = view;
+>>>>>>> cdfcdfc46b6e5ef6f5ecad79807a164d7f0434e0
     }
 
 
     @Override
     public void onClick(View v) {
+<<<<<<< HEAD
         switch (v.getId()){
             case R.id.comment_button:
 //                Toast.makeText(context, "点击了评论按钮!", Toast.LENGTH_SHORT).show();
@@ -71,5 +92,8 @@ public class MomentItem implements View.OnClickListener{
             default:
                 break;
         }
+=======
+
+>>>>>>> cdfcdfc46b6e5ef6f5ecad79807a164d7f0434e0
     }
 }

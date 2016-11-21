@@ -1,6 +1,7 @@
 package widget;
 
 import android.app.Activity;
+<<<<<<< HEAD
 import android.content.Context;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -19,6 +20,11 @@ import java.lang.ref.WeakReference;
 
 import Configuration.ConfigurationValues;
 import bean.DynamicInfo;
+=======
+import android.view.View;
+import android.view.animation.Animation;
+
+>>>>>>> cdfcdfc46b6e5ef6f5ecad79807a164d7f0434e0
 import razerdp.basepopup.BasePopupWindow;
 
 /**
@@ -26,6 +32,7 @@ import razerdp.basepopup.BasePopupWindow;
  */
 
 public class MyMomentPopup extends BasePopupWindow implements View.OnClickListener{
+<<<<<<< HEAD
     private Context context = getContext();
     private Activity mContext;
     private View mPopupView = getPopupWindowView();
@@ -134,10 +141,20 @@ public class MyMomentPopup extends BasePopupWindow implements View.OnClickListen
         if(initShowAnimation() != null && initAnimaView() != null){
             initAnimaView().startAnimation(initShowAnimation());
         }
+=======
+
+    public MyMomentPopup(Activity context) {
+        super(context);
+    }
+
+    public MyMomentPopup(Activity context, int w, int h) {
+        super(context, w, h);
+>>>>>>> cdfcdfc46b6e5ef6f5ecad79807a164d7f0434e0
     }
 
     @Override
     protected Animation initShowAnimation() {
+<<<<<<< HEAD
         return getScaleAnimation(0.0f, 1.0f, 1.0f, 1.0f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF,
                 0.0f);
     }
@@ -146,6 +163,9 @@ public class MyMomentPopup extends BasePopupWindow implements View.OnClickListen
     protected Animation initExitAnimation() {
         return getScaleAnimation(1.0f, 0.0f, 1.0f, 1.0f, Animation.RELATIVE_TO_SELF, 1.0f, Animation.RELATIVE_TO_SELF,
                 0.0f);
+=======
+        return null;
+>>>>>>> cdfcdfc46b6e5ef6f5ecad79807a164d7f0434e0
     }
 
     @Override
@@ -155,16 +175,25 @@ public class MyMomentPopup extends BasePopupWindow implements View.OnClickListen
 
     @Override
     public View onCreatePopupView() {
+<<<<<<< HEAD
         return createPopupById(R.layout.popup_comment);
+=======
+        return null;
+>>>>>>> cdfcdfc46b6e5ef6f5ecad79807a164d7f0434e0
     }
 
     @Override
     public View initAnimaView() {
+<<<<<<< HEAD
         return findViewById(R.id.comment_popup_contianer);
+=======
+        return null;
+>>>>>>> cdfcdfc46b6e5ef6f5ecad79807a164d7f0434e0
     }
 
     @Override
     public void onClick(View v) {
+<<<<<<< HEAD
     }
 
     private OnCommentPopupClickListener listener;
@@ -211,5 +240,8 @@ public class MyMomentPopup extends BasePopupWindow implements View.OnClickListen
         public float getInterpolation(float input) {
             return (float) Math.sin(input * Math.PI);
         }
+=======
+
+>>>>>>> cdfcdfc46b6e5ef6f5ecad79807a164d7f0434e0
     }
 }
